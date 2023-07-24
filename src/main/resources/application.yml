@@ -1,0 +1,15 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: oauth2-authenticator
+  datasource:
+    url: jdbc:mysql://10.5.24.98:3306/dp?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: Zhejianglab@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
