@@ -27,6 +27,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Resource
     private AuthenticationManager authenticationManagerBean;
 
+    public static final String CONFIRM_ACCESS_URL = "/oauth/confirm_access";
+
 
     /**
      * 用来配置令牌端点的安全约束
@@ -59,5 +61,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         endpoints.tokenServices(authorizationServerTokenServices);
         //密码校验
         endpoints.authenticationManager(authenticationManagerBean);
+
+        endpoints.pathMapping(CONFIRM_ACCESS_URL, "/custom/confirm_access");
     }
 }
