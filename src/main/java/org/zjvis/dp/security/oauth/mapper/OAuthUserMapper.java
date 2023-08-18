@@ -1,8 +1,8 @@
 package org.zjvis.dp.security.oauth.mapper;
 
-import org.zjvis.dp.security.oauth.mapper.dto.UserDTO;
+import org.zjvis.dp.security.oauth.dto.UserDTO;
 
-public interface UserMapper {
+public interface OAuthUserMapper {
 
     UserDTO selectByUserName(String userName);
 

@@ -1,7 +1,25 @@
 body {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: #eee;
+    padding: 0;
+    background-color: #f9fbff;
+    font-family: Helvetica, Tahoma, Arial, STXihei, 华文细黑, "Microsoft YaHei", 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif;
+}
+
+.header {
+    background-image: linear-gradient(134deg,#142053,#303e67);
+    display: flex;
+    height: 48px;
+    justify-content: space-between;
+    padding-left: 20%;
+    padding-right: 20%;
+    color: #fff;
+    line-height: 50px;
+    font-size: 18px;
+}
+
+.logo {
+    vertical-align: text-bottom;
+    margin-right: 12px;
+    width: 24px;
 }
 
 .form-signin {
@@ -9,30 +27,33 @@ body {
     padding: 15px;
     margin: 0 auto;
 }
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-    margin-bottom: 10px;
+.form-signin .form-signin-heading {
+    color: #6973ff;
+    font-size: 18px;
+    margin-bottom: 12px;
+    text-align: center;
 }
-.form-signin .checkbox {
-    font-weight: 400;
-}
+
 .form-signin .form-control {
     position: relative;
     box-sizing: border-box;
     height: auto;
-    padding: 10px;
     font-size: 16px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
 }
 .form-signin .form-control:focus {
     z-index: 2;
+    color: #495057;
+    background-color: #fff;
+    border-color: #6973ff;
+    outline: 0;
 }
-.form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+
+.btn-primary {
+    background-color: #2A4EDB;
 }
-.form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
+
+.go-register
+{    max-width: 330px;    padding: 0 15px;    margin: 0 auto;}

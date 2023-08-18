@@ -1,77 +1,107 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+  <head>
     <meta charset="UTF-8">
     <title>授权</title>
-</head>
-<style>
-
+  </head>
+  <style>
     html {
-        padding: 0px;
-        margin: 0px;
+      padding: 0;
+      margin: 0;
     }
 
-    .title {
-        background-color: #007BFF;
-        height: 50px;
-        padding-left: 20%;
-        padding-right: 20%;
-        color: white;
-        line-height: 50px;
-        font-size: 18px;
+    body {
+      margin: 0;
+      font-family: Helvetica, Tahoma, Arial, STXihei, 华文细黑, "Microsoft YaHei", 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif;
+      background-color: #f9fbff;
     }
 
-    .title-left {
-        float: right;
+    .header {
+      background-image: linear-gradient(134deg,#142053,#303e67);
+      display: flex;
+      height: 48px;
+      justify-content: space-between;
+      padding: 0 20%;
+      color: #fff;
+      line-height: 50px;
+      font-size: 18px;
     }
 
-    .title-right {
-        float: left;
+    .logo {
+      vertical-align: text-bottom;
+      margin-right: 12px;
+      width: 24px;
     }
-
-    .title-left a {
-        color: white;
+    .header-right a {
+      color: #5561ff;
     }
 
     .container {
-        clear: both;
-        text-align: center;
+      text-align: center;
+      padding: 0 20%;
+    }
+
+    .oauth-description {
+        width: 350px;
+        margin: 0 auto;
+    }
+
+    .oauth-description > p {
+        text-align: left;
+        margin: 6px 0;
+        line-height: 24px;
+    }
+
+    .oauth-description > p > input {
+        vertical-align: middle;
     }
 
     .btn {
-        width: 350px;
-        height: 35px;
-        line-height: 35px;
-        cursor: pointer;
-        margin-top: 20px;
-        border-radius: 3px;
-        background-color: #007BFF;
-        color: white;
-        border: none;
-        font-size: 15px;
+      width: 350px;
+      height: 35px;
+      line-height: 35px;
+      cursor: pointer;
+      margin-top: 12px;
+      border-radius: 3px;
+      background-color: #2A4EDB;
+      color: white;
+      border: none;
+      font-size: 15px;
     }
-</style>
-<body style="margin: 0px">
-<div class="title">
-    <div class="title-right">OAUTH 授权</div>
-    <div class="title-left">
-        <a href="#help">帮助</a>
-    </div>
-</div>
-<div class="container">
-    <h3 th:text="${clientId}+' 请求授权，该应用将获取你的以下信息'"></h3>
-    <th:block th:each="item:${scopes}">
-        <span th:text="${item}"></span>&nbsp;
-    </th:block>
-
-    授权后表明你已同意 <a href="#boot" style="color: #007BFF">OAUTH 服务协议</a>
-    <form method="post" action="/oauth/authorize">
+  </style>
+  <body style="margin: 0">
+    <header class="header">
+      <div class="header-left">
+        <img class="logo" src="/logo.svg">
+        <span>OAUTH 授权</span>
+      </div>
+      <div class="header-right">
+      </div>
+    </header>
+    <main class="container">
+      <h3>
+        <span th:text="${clientId}" style="color: #5561ff;"></span>
+        <span th:text="'请求授权，该应用将获取你的以下信息'"></span>
+      </h3>
+      <div class="oauth-description">
+        <th:block th:each="item:${scopeMap}">
+          <p>
+            <label>
+              <input style="font-style:italic;" th:text="${item.value}" type="checkbox" disabled checked/>
+            </label>
+          </p>
+        </th:block>
+        <p>
+          授权后表明你已同意 <a href="#boot" style="color: #5561ff;">OAUTH 服务协议</a>
+        </p>
+      </div>
+      <form method="post" action="/oauth/authorize">
         <input type="hidden" name="user_oauth_approval" value="true">
-        <div th:each="item:${scopes}">
-            <input type="radio" th:name="'scope.'+${item}" value="true" hidden="hidden" checked="checked"/>
+        <div th:each="item:${scopeMap}">
+          <input type="radio" th:name="'scope.'+${item.key}" value="true" hidden="hidden" checked="checked"/>
         </div>
-        <button class="btn" type="submit"> 同意/授权</button>
-    </form>
-</div>
-</body>
+        <button class="btn" type="submit">同意/授权</button>
+      </form>
+    </main>
+  </body>
 </html>

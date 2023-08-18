@@ -29,13 +29,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      * PERMIT_ALL_URL对于认证中心来说无需授权
      */
     protected static final String[] PERMIT_ALL_URL = {
-            "/oauth/**",
             "/user/**",
             "/actuator/**",
             "/error",
             "/open/api",
             "/login*",
-            "/css/*"
+            "/css/**",
+            "/**/*.svg",
+            "/doc.html#/**",
+            "/swagger-ui.html",
+            "/webjars/**",
+            "/v2/**",
+            "/swagger-resources/**",
+            "/miserver/**",
+            "/client/**",
+            "/authorize/**"
     };
 
 

@@ -1,6 +1,5 @@
-package org.zjvis.dp.security.oauth.dto;
+package org.zjvis.dp.security.oauth.mapper.dto;
 
-import java.io.Serializable;
 import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -10,10 +9,8 @@ import org.springframework.security.core.userdetails.User;
  * @create 2023-07-24 14:59
  */
 
-public class UserDetailsExpand extends User implements Serializable {
+public class UserDetailsExpand extends User {
 
-    private static final long serialVersionUID = -8749963173756275185L;
-    private Long userId;
     private String email;
     private String phone;
 
@@ -24,18 +21,13 @@ public class UserDetailsExpand extends User implements Serializable {
         super(userDTO.getUsername(), userDTO.getPassword(), authorities);
         this.email = userDTO.getEmail();
         this.phone = userDTO.getPhone();
-        this.userId = userDTO.getId();
-    }
-
-    public Long getUserId() {
-        return this.userId;
     }
 
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
     public String getPhone() {
-        return this.phone;
+        return phone;
     }
 }

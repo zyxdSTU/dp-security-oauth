@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.zjvis.dp.security.oauth.dto.UserDTO;
 import org.zjvis.dp.security.oauth.dto.UserDetailsExpand;
-import org.zjvis.dp.security.oauth.mapper.UserMapper;
+import org.zjvis.dp.security.oauth.mapper.OAuthUserMapper;
 
 /**
  * @author zhouyu
@@ -21,7 +21,7 @@ import org.zjvis.dp.security.oauth.mapper.UserMapper;
 public class OauthAccountUserDetailsService implements UserDetailsService {
 
     @Resource
-    private UserMapper userMapper;
+    private OAuthUserMapper OAuthUserMapper;
 
     /**
      * @param username the username identifying the user whose data is required.
@@ -30,7 +30,7 @@ public class OauthAccountUserDetailsService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserDTO userDTO = userMapper.selectByUserName(username);
+        UserDTO userDTO = OAuthUserMapper.selectByUserName(username);
         if (Objects.isNull(userDTO)) {
             throw new UsernameNotFoundException(String.format("%s don't exists", username));
         }
